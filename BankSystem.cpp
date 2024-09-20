@@ -1,5 +1,7 @@
 #include <iostream>
+#include <vector> 
 using std::string; 
+
 
 
 
@@ -70,6 +72,18 @@ public:
         return balance;
     }
 
+    void transfer(float transferAmount, BankSystem &destinationAccount){
+        if (transferAmount > 0 && transferAmount >= balance )
+        {
+            balance -= transferAmount;
+            destinationAccount.balance += transferAmount;
+            std::cout << "The transfer was successful. New Amount: " << balance << std::endl;
+        }else 
+        {
+            std::cout << "Insufficient funds or invalid amount" << std::endl; 
+        }
+    }
+
    static void showDetails( int &accNumber, string &accHolder, float &initialBalance ){
         std::cout << "What is your account number: " << std::endl;
         while(!(std::cin >> accNumber)){
@@ -107,7 +121,7 @@ int main(){
  BankSystem:: showDetails(accNumber, accHolder, initialBalance);
 
  BankSystem myAccount(accNumber, accHolder, initialBalance);
-
+ BankSystem secondAccount (accNumber, accHolder, initialBalance);
 
     do
     {   
@@ -146,3 +160,5 @@ int main(){
 
     return 0;
 }
+
+ 
