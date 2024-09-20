@@ -70,7 +70,7 @@ public:
         return balance;
     }
 
-    void showDetails( int &accNumber, string &accHolder, float &initialBalance ){
+   static void showDetails( int &accNumber, string &accHolder, float &initialBalance ){
         std::cout << "What is your account number: " << std::endl;
         while(!(std::cin >> accNumber)){
             std::cout << "Please make sure that you type numbers" << std::endl;
@@ -104,8 +104,10 @@ int main(){
     int choice;
 
 
+ BankSystem:: showDetails(accNumber, accHolder, initialBalance);
 
  BankSystem myAccount(accNumber, accHolder, initialBalance);
+
 
     do
     {   
